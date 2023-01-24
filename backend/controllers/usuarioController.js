@@ -1,5 +1,13 @@
-const usuarios = (req, res) => {
-  res.send("Desde GET - API/USUARIOS");
+import Usuario from "../models/Usuario.js";
+
+const registrar = async (req, res) => {
+  try {
+    const usuario = new Usuario(req.body);
+    const usuarioAlmacenado = await usuario.save();
+    res.json(usuarioAlmacenado);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-export { usuarios };
+export { registrar };

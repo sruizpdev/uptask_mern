@@ -1,7 +1,7 @@
 import express from "express";
-import { usuarios } from "../controllers/usuarioController.js";
+import { registrar } from "../controllers/usuarioController.js";
 const router = express.Router();
 
-router.get("/", usuarios);
+router.post("/", registrar);
 
 export default router;
