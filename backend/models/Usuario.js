@@ -38,6 +38,8 @@ usuarioShema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
-
+usuarioShema.methods.comprobarPassword= async function(formularioPassword){
+  return await bcrypt.compare(formularioPassword, this.password)
+}
 const Usuario = mongoose.model("Usuario", usuarioShema);
 export default Usuario;
